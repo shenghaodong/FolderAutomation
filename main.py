@@ -2,22 +2,13 @@ import os
 import shutil
 import json
 
-def sortLocation(targetDirectory):
+def sortLocation(targetDirectory, categoryMap):
     
     #Check Folder exists
     if not os.path.exists(targetDirectory):
         print(f"Error: The folder '{targetDirectory}' does not exist.")
         return
-
-    #File Categories
-    categoryMap = {
-        '.mp4': 'Videos', '.mkv': 'Videos', '.mov': 'Videos', '.avi': 'Videos',
-        '.mp3': 'Audio', '.wav': 'Audio', '.flac': 'Audio',
-        '.jpg': 'Images', '.jpeg': 'Images', '.png': 'Images', '.gif': 'Images',
-        '.pdf': 'Documents', '.txt': 'Documents', '.docx': 'Documents',
-        '.exe': 'Executables', '.msi': 'Executables', 
-        '.zip': 'Archives', '.rar': 'Archives'
-    }
+    
 
     # Ask the OS for a list of everything inside the target folder.
     listItems = os.listdir(targetDirectory)
@@ -25,7 +16,6 @@ def sortLocation(targetDirectory):
 
     # Loop through every item in the folder, one by one.
     for item in listItems:
-        
         itemPath = os.path.join(targetDirectory, item)
         
         #Skip Folders only sort files
@@ -58,8 +48,6 @@ def sortLocation(targetDirectory):
     print(f"\nSorting complete! Successfully organized {filesMoved} files.")
 
 
-
-#
 configFile = 'config.json'
 
 #Make sure config.json exists
@@ -72,9 +60,10 @@ else:
 
     #Grab sorting location from config
     savedPath = configData.get('targetDirectory')
+    savedMap = configData.get('categoryMap')
         
     #If location inside config is found
-    if savedPath:
-        sortLocation(savedPath)
+    if savedPath and savedMap:
+        sortLocation(savedPath, savedMap)
     else:
         print(f"Error: Could not find 'targetDirectory' inside {configFile}.")            

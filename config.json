@@ -1,3 +1,11 @@
 {
-    "targetDirectory": "/mnt/c/Users/Shenghao/Documents/TestFolder"
+    "targetDirectory": "/mnt/c/Users/Shenghao/Documents/TestFolder",
+    "categoryMap": {
+        ".mp4": "Videos", ".mkv": "Videos", ".mov": "Videos", ".avi": "Videos",
+        ".mp3": "Audio", ".wav": "Audio", ".flac": "Audio", ".m4a": "Audio",
+        ".jpg": "Images", ".jpeg": "Images", ".png": "Images", ".gif": "Images",
+        ".pdf": "Documents", ".txt": "Documents", ".docx": "Documents",
+        ".exe": "Executables", ".msi": "Executables", 
+        ".zip": "Archives", ".rar": "Archives"
+    }
 }
